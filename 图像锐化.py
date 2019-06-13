@@ -28,5 +28,12 @@ dst[:h, w:, :] = sharpen_image
 cv.putText(dst, "original image", (10, 30), cv.FONT_ITALIC, 1.0, (0, 0, 255), 2)
 cv.putText(dst, "sharpen image", (w+10, 30), cv.FONT_ITALIC, 1.0, (0, 0, 255), 2)
 cv.imshow('result', dst)
+
+blur = cv.GaussianBlur(src, (0, 0), 5)
+usm = cv.addWeighted(src, 1.5, blur, -0.5, 0)
+cv.imshow('usm sharpen', usm)
+
 cv.waitKey(0)
 cv.destroyAllWindows()
+
+
